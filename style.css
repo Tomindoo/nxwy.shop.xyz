@@ -1,0 +1,24 @@
+// Přidáme posluchač události na naše tlačítko
+document.getElementById("my-button").addEventListener("click", function() {
+  alert("Tlačítko bylo stisknuto!");
+});
+
+// Vytvoříme tečky na plátně
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+// Funkce pro vykreslení tečky
+function drawDot(x, y) {
+  ctx.fillStyle = "#ffffff"; // bílá barva
+  ctx.beginPath();
+  ctx.arc(x, y, 5, 0, 2 * Math.PI);
+  ctx.fill();
+}
+
+// Posluchač události při pohybu myší
+canvas.addEventListener("mousemove", function(event) {
+  var rect = canvas.getBoundingClientRect();
+  var x = event.clientX - rect.left;
+  var y = event.clientY - rect.top;
+  drawDot(x, y);
+});
